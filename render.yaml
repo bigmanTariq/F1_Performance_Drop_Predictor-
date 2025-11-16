@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: f1-performance-predictor
+    env: python
+    plan: free
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python src/data_prep.py
+      python src/train.py
+    startCommand: python src/serve.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.18
+      - key: PORT
+        fromService:
+          type: web
+          name: f1-performance-predictor
+          property: port
+    healthCheckPath: /health

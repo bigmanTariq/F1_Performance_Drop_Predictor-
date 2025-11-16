@@ -50,6 +50,13 @@ docker-compose up --build
 # Then visit http://localhost:8000/ui
 ```
 
+### Option 3: Cloud Deployment (Render.com - Free!)
+```bash
+# Push to GitHub, then deploy to Render.com
+# See DEPLOYMENT.md for detailed instructions
+# Live demo: https://your-app-url.onrender.com
+```
+
 ## 🏎️ Project Overview
 
 This system combines comprehensive F1 datasets, advanced feature engineering, and multiple ML models to predict:
@@ -361,12 +368,52 @@ After successful setup:
 3. **Try different models**: Add new algorithms in `src/train.py`
 4. **Customize API**: Extend endpoints in `src/serve.py`
 
+## 🌐 Cloud Deployment (Bonus Points!)
+
+### Quick Deploy to Render.com (Free, No Credit Card)
+
+1. **Prepare for deployment:**
+   ```bash
+   python deploy_prep.py  # Check if everything is ready
+   ```
+
+2. **Push to GitHub:**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+3. **Deploy to Render.com:**
+   - Go to [render.com](https://render.com) and sign up with GitHub
+   - Create new "Web Service" and connect your repository
+   - Use these settings:
+     - **Build Command**: `./build.sh`
+     - **Start Command**: `python src/serve.py`
+   - Click "Create Web Service" and wait 5-10 minutes
+
+4. **Test your deployment:**
+   ```bash
+   python scripts/test_deployment.py https://your-app-url.onrender.com
+   ```
+
+**📖 Detailed Instructions**: See [DEPLOYMENT.md](DEPLOYMENT.md) for complete guide
+
+### Live Demo Example
+- **API**: https://f1-performance-predictor.onrender.com
+- **Web Interface**: https://f1-performance-predictor.onrender.com/ui
+- **API Docs**: https://f1-performance-predictor.onrender.com/docs
+
+*Note: First request may take 30 seconds due to free tier cold start.*
+
 ## 📝 Additional Resources
 
 - **API Documentation**: http://localhost:8000/docs (when service is running)
 - **Example Usage**: See `examples/` directory for curl and Python examples
 - **Model Details**: Check `models/production/` for model metadata
 - **Test Examples**: Review `tests/` for usage patterns
+- **Deployment Guide**: [DEPLOYMENT.md](DEPLOYMENT.md)
+- **Deployment Checklist**: [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
 
 ---
 

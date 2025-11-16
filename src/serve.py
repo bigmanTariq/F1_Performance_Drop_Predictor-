@@ -708,11 +708,15 @@ async def get_ui():
     return FileResponse('static/index.html')
 
 if __name__ == "__main__":
+    # Get port from environment variable (for cloud deployment) or default to 8000
+    import os
+    port = int(os.environ.get("PORT", 8000))
+    
     # Run the server
     uvicorn.run(
         "serve:app",
         host="0.0.0.0",
-        port=8000,
+        port=port,
         reload=False,  # Set to True for development
         log_level="info"
     )
