@@ -21,7 +21,8 @@ from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field, validator
+from contextlib import asynccontextmanager
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 import traceback
 
 # Add src directory to path for imports
@@ -33,13 +34,23 @@ from predict import F1PerformancePredictor
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Lifespan manager for startup/shutdown events
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    await startup_event()
+    yield
+    # Shutdown (if needed)
+    pass
+
 # Initialize FastAPI app
 app = FastAPI(
     title="F1 Performance Drop Predictor API",
     description="Machine learning API for predicting Formula 1 finishing position drops",
     version="1.0.0",
     docs_url="/docs",
-    redoc_url="/redoc"
+    redoc_url="/redoc",
+    lifespan=lifespan
 )
 
 # Add CORS middleware
@@ -139,8 +150,8 @@ class RaceFeatures(BaseModel):
     championship_pressure_adjusted: float = Field(..., ge=0.0, le=1.0, description="Adjusted championship pressure")
     points_per_race: float = Field(..., ge=0.0, description="Points per race average")
 
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "championship_position": 3,
                 "pit_stop_count": 2,
@@ -191,13 +202,15 @@ class RaceFeatures(BaseModel):
                 "points_per_race": 15.0
             }
         }
+    )
 
 class BatchPredictionRequest(BaseModel):
     """Request model for batch predictions."""
     
     scenarios: List[RaceFeatures] = Field(..., description="List of race scenarios to predict")
     
-    @validator('scenarios')
+    @field_validator('scenarios')
+    @classmethod
     def validate_scenarios_length(cls, v):
         if len(v) == 0:
             raise ValueError("At least one scenario is required")
@@ -395,7 +408,6 @@ start_time = datetime.now()
 request_count = 0
 error_count = 0
 
-@app.on_event("startup")
 async def startup_event():
     """Initialize the predictor on startup."""
     global predictor
@@ -404,22 +416,46 @@ async def startup_event():
         
         # Check if models exist, if not create them
         import os
-        models_dir = "models/production"
-        if not os.path.exists(models_dir) or not os.listdir(models_dir):
-            logger.info("Models not found, training models now...")
-            # Run data prep and training
-            import subprocess
-            subprocess.run(["python", "data_prep.py"], check=True)
-            subprocess.run(["python", "train.py"], check=True)
-            logger.info("Model training completed")
+        import subprocess
+        from pathlib import Path
         
-        predictor = F1PerformancePredictor()
-        predictor.load_models()
-        logger.info("API startup completed successfully")
+        models_dir = Path("models/production")
+        
+        # More robust model checking
+        model_files = list(models_dir.glob("*.joblib")) if models_dir.exists() else []
+        
+        if not model_files:
+            logger.info("Models not found, attempting to train...")
+            
+            # Run the deployment fix script
+            try:
+                result = subprocess.run([
+                    sys.executable, "deploy_models_fix.py"
+                ], check=True, capture_output=True, text=True, timeout=900)
+                logger.info("Model deployment fix completed successfully")
+            except subprocess.TimeoutExpired:
+                logger.error("Model deployment fix timed out")
+            except subprocess.CalledProcessError as e:
+                logger.error(f"Model deployment fix failed: {e.stderr}")
+            except Exception as e:
+                logger.error(f"Unexpected error in model deployment: {e}")
+        
+        # Attempt to load the predictor
+        try:
+            predictor = F1PerformancePredictor()
+            predictor.load_models()
+            logger.info("✅ API startup completed successfully - models loaded")
+        except Exception as model_error:
+            logger.error(f"❌ Failed to load models: {model_error}")
+            # Create a dummy predictor that will return appropriate errors
+            predictor = None
+        
     except Exception as e:
         logger.error(f"Failed to initialize predictor: {str(e)}")
         logger.error(f"Error details: {type(e).__name__}: {str(e)}")
-        # Don't raise here - let the service start and return errors on requests
+        import traceback
+        logger.error(f"Full traceback: {traceback.format_exc()}")
+        predictor = None
 
 @app.exception_handler(ValidationError)
 async def validation_exception_handler(request: Request, exc: ValidationError):
@@ -524,6 +560,21 @@ async def health_check():
     uptime = (datetime.now() - start_time).total_seconds()
     error_rate = (error_count / request_count * 100) if request_count > 0 else 0
     
+    # Check model status
+    models_loaded = predictor and predictor.models_loaded if predictor else False
+    
+    # Check if models directory exists
+    import os
+    models_exist = os.path.exists("models/production") and bool(os.listdir("models/production"))
+    
+    # Determine status
+    if models_loaded:
+        status = "healthy"
+    elif models_exist:
+        status = "models_found_but_not_loaded"
+    else:
+        status = "no_models_found"
+    
     # Get memory usage if psutil is available
     memory_info = None
     try:
@@ -538,9 +589,9 @@ async def health_check():
         pass
     
     return HealthResponse(
-        status="healthy" if predictor and predictor.models_loaded else "unhealthy",
+        status=status,
         timestamp=datetime.now().isoformat(),
-        models_loaded=predictor.models_loaded if predictor else False,
+        models_loaded=models_loaded,
         uptime_seconds=uptime,
         request_count=request_count,
         error_count=error_count,

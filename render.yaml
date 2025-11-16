@@ -6,9 +6,11 @@ services:
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
-      python src/data_prep.py
-      python src/train.py
-    startCommand: python src/serve.py
+      chmod +x build.sh
+      ./build.sh
+    startCommand: |
+      chmod +x start.sh
+      ./start.sh
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.18
@@ -17,4 +19,6 @@ services:
           type: web
           name: f1-performance-predictor
           property: port
+      - key: RENDER_DEPLOYMENT
+        value: "true"
     healthCheckPath: /health
