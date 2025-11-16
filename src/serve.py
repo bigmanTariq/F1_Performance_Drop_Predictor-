@@ -636,6 +636,49 @@ async def get_model_info():
         feature_info=model_info.get('feature_info')
     )
 
+@app.get("/debug")
+async def debug_info():
+    """
+    Debug endpoint to diagnose deployment issues.
+    """
+    import os
+    from pathlib import Path
+    
+    debug_data = {
+        "predictor_status": "initialized" if predictor else "not_initialized",
+        "models_loaded": predictor.models_loaded if predictor else False,
+        "models_directory_exists": os.path.exists("models/production"),
+        "model_files": [],
+        "registry_exists": os.path.exists("models/model_registry.json"),
+        "data_files": [],
+        "environment": {
+            "python_path": os.environ.get("PYTHONPATH", "not_set"),
+            "current_dir": os.getcwd(),
+        }
+    }
+    
+    # Check model files
+    models_dir = Path("models/production")
+    if models_dir.exists():
+        debug_data["model_files"] = [f.name for f in models_dir.iterdir() if f.is_file()]
+    
+    # Check data files
+    data_dir = Path("data")
+    if data_dir.exists():
+        debug_data["data_files"] = [f.name for f in data_dir.iterdir() if f.is_file()]
+    
+    # Check registry content
+    if os.path.exists("models/model_registry.json"):
+        try:
+            import json
+            with open("models/model_registry.json", 'r') as f:
+                registry_data = json.load(f)
+                debug_data["registry_models"] = list(registry_data.get("models", {}).keys())
+        except Exception as e:
+            debug_data["registry_error"] = str(e)
+    
+    return debug_data
+
 @app.post("/predict", response_model=PredictionResponse)
 async def predict_performance_drop(features: RaceFeatures):
     """
