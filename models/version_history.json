@@ -1,0 +1,134 @@
+{
+  "created_at": "2025-11-16T22:50:53.654995",
+  "models": {
+    "logistic_regression_classification_20251116_225018_c55d8fae": {
+      "model_name": "logistic_regression",
+      "task_type": "classification",
+      "timestamp": "20251116_225018",
+      "performance_summary": {
+        "primary_metric": {
+          "accuracy": 0.7464960390006093,
+          "precision": 0.7477926339615998,
+          "recall": 0.7464960390006093,
+          "f1": 0.7471158473081371,
+          "roc_auc": 0.7979808475194097
+        },
+        "validation_score": 0.7525728143760346,
+        "overfitting_level": "minimal"
+      }
+    },
+    "linear_regression_regression_20251116_225018_7c2a9986": {
+      "model_name": "linear_regression",
+      "task_type": "regression",
+      "timestamp": "20251116_225018",
+      "performance_summary": {
+        "primary_metric": {
+          "mae": 2.2576087174085893,
+          "mse": 8.319431349195028,
+          "rmse": 2.8843424465890015,
+          "r2": 0.47292894168157995
+        },
+        "validation_score": 3.117313464662521,
+        "overfitting_level": "minimal"
+      }
+    },
+    "decision_tree_classifier_classification_20251116_225018_7b9cc48b": {
+      "model_name": "decision_tree_classifier",
+      "task_type": "classification",
+      "timestamp": "20251116_225018",
+      "performance_summary": {
+        "primary_metric": {
+          "accuracy": 0.732480195003047,
+          "precision": 0.721896543550579,
+          "recall": 0.732480195003047,
+          "f1": 0.7243046729450916,
+          "roc_auc": 0.7044949734106882
+        },
+        "validation_score": 0.7618928984285207,
+        "overfitting_level": "minimal"
+      }
+    },
+    "decision_tree_regressor_regression_20251116_225018_6adb3038": {
+      "model_name": "decision_tree_regressor",
+      "task_type": "regression",
+      "timestamp": "20251116_225018",
+      "performance_summary": {
+        "primary_metric": {
+          "mae": 2.4321243270945008,
+          "mse": 10.955709361468626,
+          "rmse": 3.309940990632405,
+          "r2": 0.30590961263992955
+        },
+        "validation_score": 3.1518838978070653,
+        "overfitting_level": "minimal"
+      }
+    },
+    "random_forest_classifier_classification_20251116_225020_f58cd65c": {
+      "model_name": "random_forest_classifier",
+      "task_type": "classification",
+      "timestamp": "20251116_225020",
+      "performance_summary": {
+        "primary_metric": {
+          "accuracy": 0.7751371115173674,
+          "precision": 0.7703110522479836,
+          "recall": 0.7751371115173674,
+          "f1": 0.7577059472588211,
+          "roc_auc": 0.8153422543512105
+        },
+        "validation_score": 0.8028541865120502,
+        "overfitting_level": "minimal"
+      }
+    },
+    "random_forest_regressor_regression_20251116_225052_f3139a5a": {
+      "model_name": "random_forest_regressor",
+      "task_type": "regression",
+      "timestamp": "20251116_225052",
+      "performance_summary": {
+        "primary_metric": {
+          "mae": 1.9764761230627317,
+          "mse": 7.323576041712637,
+          "rmse": 2.7062106425244576,
+          "r2": 0.536020574849218
+        },
+        "validation_score": 3.1776962228759467,
+        "overfitting_level": "minimal"
+      }
+    }
+  },
+  "performance_trends": {
+    "classification": [
+      {
+        "model_id": "logistic_regression_classification_20251116_225018_c55d8fae",
+        "timestamp": "20251116_225018",
+        "score": 0.7525728143760346
+      },
+      {
+        "model_id": "decision_tree_classifier_classification_20251116_225018_7b9cc48b",
+        "timestamp": "20251116_225018",
+        "score": 0.7618928984285207
+      },
+      {
+        "model_id": "random_forest_classifier_classification_20251116_225020_f58cd65c",
+        "timestamp": "20251116_225020",
+        "score": 0.8028541865120502
+      }
+    ],
+    "regression": [
+      {
+        "model_id": "linear_regression_regression_20251116_225018_7c2a9986",
+        "timestamp": "20251116_225018",
+        "score": 3.117313464662521
+      },
+      {
+        "model_id": "decision_tree_regressor_regression_20251116_225018_6adb3038",
+        "timestamp": "20251116_225018",
+        "score": 3.1518838978070653
+      },
+      {
+        "model_id": "random_forest_regressor_regression_20251116_225052_f3139a5a",
+        "timestamp": "20251116_225052",
+        "score": 3.1776962228759467
+      }
+    ]
+  }
+}

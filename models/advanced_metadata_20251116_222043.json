@@ -1,0 +1,180 @@
+{
+  "timestamp": "20251116_222043",
+  "feature_names": [
+    "championship_position",
+    "pit_stop_count",
+    "avg_pit_time",
+    "pit_time_std",
+    "circuit_length",
+    "points",
+    "pit_frequency",
+    "pit_duration_variance",
+    "high_pit_frequency",
+    "qualifying_gap_to_pole",
+    "grid_position_percentile",
+    "poor_qualifying",
+    "circuit_dnf_rate",
+    "is_street_circuit",
+    "championship_pressure",
+    "leader_points",
+    "points_gap_to_leader",
+    "points_pressure",
+    "driver_avg_grid_position",
+    "qualifying_vs_average",
+    "constructor_avg_grid_position",
+    "qualifying_vs_constructor_avg",
+    "bad_qualifying_day",
+    "circuit_dnf_rate_detailed",
+    "avg_pit_stops",
+    "avg_pit_duration",
+    "dnf_score",
+    "volatility_score",
+    "pit_complexity_score",
+    "track_difficulty_score",
+    "race_number",
+    "first_season",
+    "seasons_active",
+    "estimated_age",
+    "driver_rolling_avg_grid",
+    "season_leader_points",
+    "points_gap_to_season_leader",
+    "is_championship_contender",
+    "points_momentum",
+    "championship_position_change",
+    "teammate_avg_grid",
+    "grid_vs_teammate",
+    "championship_pressure_score",
+    "max_round",
+    "late_season_race",
+    "championship_pressure_adjusted",
+    "points_per_race"
+  ],
+  "evaluation": {
+    "classification": {
+      "model_type": "Logistic Regression",
+      "metrics": {
+        "accuracy": 0.7464960390006093,
+        "precision": 0.7477926339615998,
+        "recall": 0.7464960390006093,
+        "f1": 0.7471158473081371,
+        "roc_auc": 0.7979808475194097
+      },
+      "classification_report": {
+        "0": {
+          "precision": 0.8161231884057971,
+          "recall": 0.8087971274685817,
+          "f1-score": 0.8124436429215509,
+          "support": 1114.0
+        },
+        "1": {
+          "precision": 0.6033519553072626,
+          "recall": 0.6148007590132827,
+          "f1-score": 0.6090225563909775,
+          "support": 527.0
+        },
+        "accuracy": 0.7464960390006093,
+        "macro avg": {
+          "precision": 0.7097375718565299,
+          "recall": 0.7117989432409322,
+          "f1-score": 0.7107330996562642,
+          "support": 1641.0
+        },
+        "weighted avg": {
+          "precision": 0.7477926339615998,
+          "recall": 0.7464960390006093,
+          "f1-score": 0.7471158473081371,
+          "support": 1641.0
+        }
+      }
+    },
+    "regression": {
+      "model_type": "Linear Regression",
+      "metrics": {
+        "mae": 2.2576087174085893,
+        "mse": 8.319431349195028,
+        "rmse": 2.8843424465890015,
+        "r2": 0.47292894168157995
+      }
+    },
+    "summary": {
+      "classification_accuracy": 0.7464960390006093,
+      "regression_mae": 2.2576087174085893,
+      "meets_baseline_requirements": true,
+      "timestamp": "2025-11-16T22:20:43.859620"
+    }
+  },
+  "comparison": {
+    "classification": {
+      "models": {
+        "Logistic Regression": {
+          "accuracy": 0.7464960390006093,
+          "precision": 0.7477926339615998,
+          "recall": 0.7464960390006093,
+          "f1": 0.7471158473081371,
+          "roc_auc": 0.7979808475194097
+        },
+        "Decision Tree Classifier": {
+          "accuracy": 0.732480195003047,
+          "precision": 0.721896543550579,
+          "recall": 0.732480195003047,
+          "f1": 0.7243046729450916,
+          "roc_auc": 0.7044949734106882
+        },
+        "Random Forest Classifier": {
+          "accuracy": 0.7751371115173674,
+          "precision": 0.7703110522479836,
+          "recall": 0.7751371115173674,
+          "f1": 0.7577059472588211,
+          "roc_auc": 0.8153422543512105
+        }
+      },
+      "best_model": "Random Forest Classifier",
+      "best_f1": 0.7577059472588211
+    },
+    "regression": {
+      "models": {
+        "Linear Regression": {
+          "mae": 2.2576087174085893,
+          "mse": 8.319431349195028,
+          "rmse": 2.8843424465890015,
+          "r2": 0.47292894168157995
+        },
+        "Decision Tree Regressor": {
+          "mae": 2.4321243270945008,
+          "mse": 10.955709361468626,
+          "rmse": 3.309940990632405,
+          "r2": 0.30590961263992955
+        },
+        "Random Forest Regressor": {
+          "mae": 1.9764761230627317,
+          "mse": 7.323576041712637,
+          "rmse": 2.7062106425244576,
+          "r2": 0.536020574849218
+        }
+      },
+      "best_model": "Random Forest Regressor",
+      "best_mae": 1.9764761230627317
+    },
+    "best_models": {
+      "classification": "Random Forest Classifier",
+      "regression": "Random Forest Regressor"
+    }
+  },
+  "model_info": {
+    "baseline_models": [
+      "logistic_regression",
+      "linear_regression",
+      "scaler"
+    ],
+    "advanced_models": [
+      "decision_tree_classifier",
+      "decision_tree_regressor",
+      "random_forest_classifier",
+      "random_forest_regressor",
+      "scaler"
+    ],
+    "best_classification_model": "Random Forest Classifier",
+    "best_regression_model": "Random Forest Regressor",
+    "preprocessing": "StandardScaler"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "timestamp": "20251116_214441",
+  "feature_names": [
+    "championship_position",
+    "pit_stop_count",
+    "avg_pit_time",
+    "pit_time_std",
+    "circuit_length",
+    "points",
+    "pit_frequency",
+    "pit_duration_variance",
+    "high_pit_frequency",
+    "qualifying_gap_to_pole",
+    "grid_position_percentile",
+    "poor_qualifying",
+    "is_dnf",
+    "circuit_dnf_rate",
+    "is_street_circuit",
+    "championship_pressure",
+    "leader_points",
+    "points_gap_to_leader",
+    "points_pressure",
+    "driver_avg_grid_position",
+    "qualifying_vs_average",
+    "constructor_avg_grid_position",
+    "qualifying_vs_constructor_avg",
+    "bad_qualifying_day",
+    "circuit_dnf_rate_detailed",
+    "avg_position_change",
+    "position_change_volatility",
+    "avg_pit_stops",
+    "avg_pit_duration",
+    "dnf_score",
+    "volatility_score",
+    "pit_complexity_score",
+    "track_difficulty_score",
+    "race_number",
+    "first_season",
+    "seasons_active",
+    "estimated_age",
+    "driver_rolling_dnf_rate",
+    "driver_reliability_score",
+    "constructor_rolling_dnf_rate",
+    "constructor_reliability_score",
+    "driver_rolling_avg_position",
+    "driver_rolling_avg_grid",
+    "recent_performance_trend",
+    "season_leader_points",
+    "points_gap_to_season_leader",
+    "is_championship_contender",
+    "points_momentum",
+    "championship_position_change",
+    "constructor_season_avg_position",
+    "teammate_avg_position",
+    "teammate_avg_grid",
+    "position_vs_teammate",
+    "grid_vs_teammate",
+    "is_win",
+    "career_win_rate",
+    "is_podium",
+    "career_podium_rate",
+    "is_points",
+    "career_points_rate",
+    "championship_pressure_score",
+    "max_round",
+    "late_season_race",
+    "championship_pressure_adjusted",
+    "points_per_race"
+  ],
+  "evaluation": {
+    "classification": {
+      "model_type": "Logistic Regression",
+      "metrics": {
+        "accuracy": 0.9987812309567337,
+        "precision": 0.9987834151306464,
+        "recall": 0.9987812309567337,
+        "f1": 0.9987806189642304,
+        "roc_auc": 0.999982966488269
+      },
+      "classification_report": {
+        "0": {
+          "precision": 0.9982078853046595,
+          "recall": 1.0,
+          "f1-score": 0.9991031390134529,
+          "support": 1114.0
+        },
+        "1": {
+          "precision": 1.0,
+          "recall": 0.9962049335863378,
+          "f1-score": 0.9980988593155894,
+          "support": 527.0
+        },
+        "accuracy": 0.9987812309567337,
+        "macro avg": {
+          "precision": 0.9991039426523298,
+          "recall": 0.9981024667931688,
+          "f1-score": 0.9986009991645212,
+          "support": 1641.0
+        },
+        "weighted avg": {
+          "precision": 0.9987834151306464,
+          "recall": 0.9987812309567337,
+          "f1-score": 0.9987806189642304,
+          "support": 1641.0
+        }
+      }
+    },
+    "regression": {
+      "model_type": "Linear Regression",
+      "metrics": {
+        "mae": 1.0679384792021996e-14,
+        "mse": 1.9181094623194327e-28,
+        "rmse": 1.3849582890179158e-14,
+        "r2": 1.0
+      }
+    },
+    "summary": {
+      "classification_accuracy": 0.9987812309567337,
+      "regression_mae": 1.0679384792021996e-14,
+      "meets_baseline_requirements": true,
+      "timestamp": "2025-11-16T21:44:41.946163"
+    }
+  },
+  "model_info": {
+    "classification_model": "LogisticRegression",
+    "regression_model": "LinearRegression",
+    "preprocessing": "StandardScaler"
+  }
+}

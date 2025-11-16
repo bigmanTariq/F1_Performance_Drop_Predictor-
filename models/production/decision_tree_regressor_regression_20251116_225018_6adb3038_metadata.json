@@ -1,0 +1,126 @@
+{
+  "model_id": "decision_tree_regressor_regression_20251116_225018_6adb3038",
+  "model_name": "decision_tree_regressor",
+  "task_type": "regression",
+  "model_type": "DecisionTreeRegressor",
+  "timestamp": "20251116_225018",
+  "model_hash": "6adb303848b07706d41da208bf4db7a5",
+  "files": {
+    "model": "models/production/decision_tree_regressor_regression_20251116_225018_6adb3038_model.joblib",
+    "scaler": "models/production/decision_tree_regressor_regression_20251116_225018_6adb3038_scaler.joblib",
+    "metadata": "models/production/decision_tree_regressor_regression_20251116_225018_6adb3038_metadata.json"
+  },
+  "feature_info": {
+    "feature_names": [
+      "championship_position",
+      "pit_stop_count",
+      "avg_pit_time",
+      "pit_time_std",
+      "circuit_length",
+      "points",
+      "pit_frequency",
+      "pit_duration_variance",
+      "high_pit_frequency",
+      "qualifying_gap_to_pole",
+      "grid_position_percentile",
+      "poor_qualifying",
+      "circuit_dnf_rate",
+      "is_street_circuit",
+      "championship_pressure",
+      "leader_points",
+      "points_gap_to_leader",
+      "points_pressure",
+      "driver_avg_grid_position",
+      "qualifying_vs_average",
+      "constructor_avg_grid_position",
+      "qualifying_vs_constructor_avg",
+      "bad_qualifying_day",
+      "circuit_dnf_rate_detailed",
+      "avg_pit_stops",
+      "avg_pit_duration",
+      "dnf_score",
+      "volatility_score",
+      "pit_complexity_score",
+      "track_difficulty_score",
+      "race_number",
+      "first_season",
+      "seasons_active",
+      "estimated_age",
+      "driver_rolling_avg_grid",
+      "season_leader_points",
+      "points_gap_to_season_leader",
+      "is_championship_contender",
+      "points_momentum",
+      "championship_position_change",
+      "teammate_avg_grid",
+      "grid_vs_teammate",
+      "championship_pressure_score",
+      "max_round",
+      "late_season_race",
+      "championship_pressure_adjusted",
+      "points_per_race"
+    ],
+    "n_features": 47,
+    "requires_scaling": true
+  },
+  "performance_metrics": {
+    "mae": 2.4321243270945008,
+    "mse": 10.955709361468626,
+    "rmse": 3.309940990632405,
+    "r2": 0.30590961263992955
+  },
+  "validation": {
+    "overfitting_analysis": {
+      "train_score": 3.9518274784293848,
+      "validation_score": 3.929061259067691,
+      "performance_gap": 0.02276621936169354,
+      "relative_gap": 0.005760934526104807,
+      "overfitting_level": "minimal",
+      "is_overfitting": false,
+      "metric_name": "MAE",
+      "recommendations": []
+    },
+    "cross_validation": {
+      "cv_scores": [
+        3.170485378704337,
+        3.110459546005812,
+        3.1834530399729504,
+        3.0985814457202605,
+        3.1964400786319676
+      ],
+      "mean_cv_score": 3.1518838978070653,
+      "std_cv_score": 0.03971147793518371,
+      "min_cv_score": 3.0985814457202605,
+      "max_cv_score": 3.1964400786319676,
+      "cv_folds": 5,
+      "metric_name": "MAE",
+      "scoring": "neg_mean_absolute_error",
+      "confidence_interval": 0.034808645146821075,
+      "ci_lower": 3.117075252660244,
+      "ci_upper": 3.1866925429538866
+    }
+  },
+  "model_parameters": {
+    "ccp_alpha": 0.0,
+    "criterion": "squared_error",
+    "max_depth": 5,
+    "max_features": null,
+    "max_leaf_nodes": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 4,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "random_state": 42,
+    "splitter": "best"
+  },
+  "training_info": {
+    "framework": "scikit-learn",
+    "python_version": "3.11",
+    "dependencies": {
+      "sklearn": "1.3.0",
+      "pandas": "2.0.0",
+      "numpy": "1.24.0"
+    }
+  }
+}

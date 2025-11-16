@@ -1,0 +1,1567 @@
+{
+  "evaluation_summary": {
+    "best_classification_accuracy": 0.7751371115173674,
+    "best_classification_f1": 0.7577059472588211,
+    "best_regression_mae": 1.9764761230627317,
+    "best_regression_r2": 0.536020574849218,
+    "meets_performance_requirements": true,
+    "total_models_evaluated": 6,
+    "timestamp": "2025-11-16T22:23:32.081568"
+  },
+  "model_comparison": {
+    "best_classification_model": "random_forest_classifier",
+    "best_classification_f1": 0.7577059472588211,
+    "best_regression_model": "random_forest_regressor",
+    "best_regression_mae": 1.9764761230627317,
+    "classification_ranking": [
+      [
+        "random_forest_classifier",
+        0.7577059472588211
+      ],
+      [
+        "logistic_regression",
+        0.7471158473081371
+      ],
+      [
+        "decision_tree_classifier",
+        0.7243046729450916
+      ]
+    ],
+    "regression_ranking": [
+      [
+        "random_forest_regressor",
+        1.9764761230627317
+      ],
+      [
+        "linear_regression",
+        2.2576087174085893
+      ],
+      [
+        "decision_tree_regressor",
+        2.4321243270945008
+      ]
+    ]
+  },
+  "classification_models": {
+    "logistic_regression": {
+      "model_type": "Logistic Regression",
+      "accuracy": 0.7464960390006093,
+      "f1_score": 0.7471158473081371,
+      "roc_auc": 0.7979808475194097,
+      "accuracy_ci": [
+        0.7275898842169408,
+        0.7678244972577697
+      ],
+      "f1_ci": [
+        0.7281248049662136,
+        0.7688560853884707
+      ],
+      "best_params": {}
+    },
+    "decision_tree_classifier": {
+      "model_type": "Decision Tree Classifier",
+      "accuracy": 0.732480195003047,
+      "f1_score": 0.7243046729450916,
+      "roc_auc": 0.7044949734106882,
+      "accuracy_ci": [
+        0.7111517367458866,
+        0.7538086532602072
+      ],
+      "f1_ci": [
+        0.7013026907579237,
+        0.7470112542503868
+      ],
+      "best_params": {}
+    },
+    "random_forest_classifier": {
+      "model_type": "Random Forest Classifier",
+      "accuracy": 0.7751371115173674,
+      "f1_score": 0.7577059472588211,
+      "roc_auc": 0.8153422543512105,
+      "accuracy_ci": [
+        0.7556215722120658,
+        0.7946526508226691
+      ],
+      "f1_ci": [
+        0.7359895011702854,
+        0.7799438122175634
+      ],
+      "best_params": {}
+    }
+  },
+  "regression_models": {
+    "random_forest_regressor": {
+      "model_type": "Random Forest Regressor",
+      "mae": 1.9764761230627317,
+      "rmse": 2.7062106425244576,
+      "r2": 0.536020574849218,
+      "mae_ci": [
+        1.881443142273547,
+        2.067619683889473
+      ],
+      "r2_ci": [
+        0.49136488617621515,
+        0.5775379598815492
+      ],
+      "median_absolute_error": 1.4984523809523798,
+      "best_params": {}
+    },
+    "linear_regression": {
+      "model_type": "Linear Regression",
+      "mae": 2.2576087174085893,
+      "rmse": 2.8843424465890015,
+      "r2": 0.47292894168157995,
+      "mae_ci": [
+        2.1716145189957765,
+        2.3429774928930773
+      ],
+      "r2_ci": [
+        0.425071964612539,
+        0.5199294511043512
+      ],
+      "median_absolute_error": 1.8969480926888476,
+      "best_params": {}
+    },
+    "decision_tree_regressor": {
+      "model_type": "Decision Tree Regressor",
+      "mae": 2.4321243270945008,
+      "rmse": 3.309940990632405,
+      "r2": 0.30590961263992955,
+      "mae_ci": [
+        2.328446141384972,
+        2.542201691159375
+      ],
+      "r2_ci": [
+        0.2448343236863662,
+        0.36311346921672333
+      ],
+      "median_absolute_error": 1.6565656565656566,
+      "best_params": {}
+    }
+  },
+  "feature_importance": {
+    "logistic_regression": {
+      "feature_importances": [
+        {
+          "feature": "championship_position",
+          "importance": 0.9531574091898879
+        },
+        {
+          "feature": "qualifying_gap_to_pole",
+          "importance": 0.6772798945760925
+        },
+        {
+          "feature": "pit_time_std",
+          "importance": 0.6520959906094738
+        },
+        {
+          "feature": "teammate_avg_grid",
+          "importance": 0.6138692460811833
+        },
+        {
+          "feature": "championship_position_change",
+          "importance": 0.6102835892428113
+        },
+        {
+          "feature": "championship_pressure_score",
+          "importance": 0.5942825799322887
+        },
+        {
+          "feature": "qualifying_vs_average",
+          "importance": 0.5940395395570255
+        },
+        {
+          "feature": "qualifying_vs_constructor_avg",
+          "importance": 0.5707101803283223
+        },
+        {
+          "feature": "championship_pressure_adjusted",
+          "importance": 0.46346202372843764
+        },
+        {
+          "feature": "pit_duration_variance",
+          "importance": 0.4325535512093623
+        },
+        {
+          "feature": "constructor_avg_grid_position",
+          "importance": 0.38093607286937
+        },
+        {
+          "feature": "driver_avg_grid_position",
+          "importance": 0.3527962211823647
+        },
+        {
+          "feature": "grid_vs_teammate",
+          "importance": 0.29288959200431675
+        },
+        {
+          "feature": "first_season",
+          "importance": 0.27920542017220806
+        },
+        {
+          "feature": "points",
+          "importance": 0.25245300017988753
+        },
+        {
+          "feature": "grid_position_percentile",
+          "importance": 0.24745406372416584
+        },
+        {
+          "feature": "late_season_race",
+          "importance": 0.2265629482893166
+        },
+        {
+          "feature": "high_pit_frequency",
+          "importance": 0.19115011810560278
+        },
+        {
+          "feature": "championship_pressure",
+          "importance": 0.18981635883161752
+        },
+        {
+          "feature": "poor_qualifying",
+          "importance": 0.18894550896431095
+        },
+        {
+          "feature": "points_gap_to_season_leader",
+          "importance": 0.13597177781249306
+        },
+        {
+          "feature": "points_gap_to_leader",
+          "importance": 0.13597177781249306
+        },
+        {
+          "feature": "pit_stop_count",
+          "importance": 0.10015495145534327
+        },
+        {
+          "feature": "pit_frequency",
+          "importance": 0.10015495145534327
+        },
+        {
+          "feature": "avg_pit_stops",
+          "importance": 0.08426004860371053
+        },
+        {
+          "feature": "pit_complexity_score",
+          "importance": 0.08426004860370039
+        },
+        {
+          "feature": "avg_pit_time",
+          "importance": 0.07532752916064553
+        },
+        {
+          "feature": "race_number",
+          "importance": 0.06904405720158852
+        },
+        {
+          "feature": "points_per_race",
+          "importance": 0.05685198798892989
+        },
+        {
+          "feature": "seasons_active",
+          "importance": 0.05161194761938384
+        },
+        {
+          "feature": "estimated_age",
+          "importance": 0.05161194761938384
+        },
+        {
+          "feature": "avg_pit_duration",
+          "importance": 0.04920363847289541
+        },
+        {
+          "feature": "bad_qualifying_day",
+          "importance": 0.045381089222447824
+        },
+        {
+          "feature": "max_round",
+          "importance": 0.041381842746442396
+        },
+        {
+          "feature": "volatility_score",
+          "importance": 0.039358598169944116
+        },
+        {
+          "feature": "points_momentum",
+          "importance": 0.03759407856346442
+        },
+        {
+          "feature": "circuit_dnf_rate_detailed",
+          "importance": 0.03249697081000197
+        },
+        {
+          "feature": "circuit_dnf_rate",
+          "importance": 0.03249697081000197
+        },
+        {
+          "feature": "dnf_score",
+          "importance": 0.03249697080997964
+        },
+        {
+          "feature": "leader_points",
+          "importance": 0.02351999437053439
+        },
+        {
+          "feature": "season_leader_points",
+          "importance": 0.02351999437053439
+        },
+        {
+          "feature": "circuit_length",
+          "importance": 0.02154607493522593
+        },
+        {
+          "feature": "track_difficulty_score",
+          "importance": 0.019485716606541414
+        },
+        {
+          "feature": "is_championship_contender",
+          "importance": 0.01861043027169001
+        },
+        {
+          "feature": "points_pressure",
+          "importance": 0.01861043027168989
+        },
+        {
+          "feature": "driver_rolling_avg_grid",
+          "importance": 0.01709177267572227
+        },
+        {
+          "feature": "is_street_circuit",
+          "importance": 0.008295690072778587
+        }
+      ],
+      "top_10_features": [
+        "championship_position",
+        "qualifying_gap_to_pole",
+        "pit_time_std",
+        "teammate_avg_grid",
+        "championship_position_change",
+        "championship_pressure_score",
+        "qualifying_vs_average",
+        "qualifying_vs_constructor_avg",
+        "championship_pressure_adjusted",
+        "pit_duration_variance"
+      ],
+      "importance_sum": 10.170254597290956
+    },
+    "random_forest_regressor": {
+      "feature_importances": [
+        {
+          "feature": "qualifying_gap_to_pole",
+          "importance": 0.31335863565898014
+        },
+        {
+          "feature": "qualifying_vs_constructor_avg",
+          "importance": 0.08490488408838313
+        },
+        {
+          "feature": "championship_position_change",
+          "importance": 0.08436339308355206
+        },
+        {
+          "feature": "grid_position_percentile",
+          "importance": 0.05353794275822137
+        },
+        {
+          "feature": "qualifying_vs_average",
+          "importance": 0.04498877841753611
+        },
+        {
+          "feature": "championship_position",
+          "importance": 0.04485737380708162
+        },
+        {
+          "feature": "points_per_race",
+          "importance": 0.03199910764514305
+        },
+        {
+          "feature": "points_momentum",
+          "importance": 0.029375903203031205
+        },
+        {
+          "feature": "first_season",
+          "importance": 0.027917210222286038
+        },
+        {
+          "feature": "avg_pit_time",
+          "importance": 0.020783306950153735
+        },
+        {
+          "feature": "pit_time_std",
+          "importance": 0.018251889255148646
+        },
+        {
+          "feature": "pit_duration_variance",
+          "importance": 0.017870558909898027
+        },
+        {
+          "feature": "points",
+          "importance": 0.01740537252506323
+        },
+        {
+          "feature": "driver_rolling_avg_grid",
+          "importance": 0.01575226908740212
+        },
+        {
+          "feature": "race_number",
+          "importance": 0.014800772249643598
+        },
+        {
+          "feature": "grid_vs_teammate",
+          "importance": 0.013487837685159043
+        },
+        {
+          "feature": "volatility_score",
+          "importance": 0.011191829252339774
+        },
+        {
+          "feature": "teammate_avg_grid",
+          "importance": 0.010852624014754357
+        },
+        {
+          "feature": "points_gap_to_leader",
+          "importance": 0.010812809161856222
+        },
+        {
+          "feature": "circuit_length",
+          "importance": 0.010806068039306324
+        },
+        {
+          "feature": "points_gap_to_season_leader",
+          "importance": 0.010275234324381696
+        },
+        {
+          "feature": "driver_avg_grid_position",
+          "importance": 0.010205045472903343
+        },
+        {
+          "feature": "avg_pit_duration",
+          "importance": 0.009911187604042365
+        },
+        {
+          "feature": "max_round",
+          "importance": 0.008698779824571611
+        },
+        {
+          "feature": "constructor_avg_grid_position",
+          "importance": 0.007518678949388399
+        },
+        {
+          "feature": "track_difficulty_score",
+          "importance": 0.007278127803235547
+        },
+        {
+          "feature": "leader_points",
+          "importance": 0.006705344928380754
+        },
+        {
+          "feature": "season_leader_points",
+          "importance": 0.006411652810608772
+        },
+        {
+          "feature": "championship_pressure_adjusted",
+          "importance": 0.0062442641078073
+        },
+        {
+          "feature": "seasons_active",
+          "importance": 0.005832797872057356
+        },
+        {
+          "feature": "estimated_age",
+          "importance": 0.005580989470841211
+        },
+        {
+          "feature": "avg_pit_stops",
+          "importance": 0.005472833450815714
+        },
+        {
+          "feature": "pit_complexity_score",
+          "importance": 0.005390675539294293
+        },
+        {
+          "feature": "championship_pressure_score",
+          "importance": 0.004789145632956051
+        },
+        {
+          "feature": "championship_pressure",
+          "importance": 0.003524072238590817
+        },
+        {
+          "feature": "dnf_score",
+          "importance": 0.003098144631511868
+        },
+        {
+          "feature": "circuit_dnf_rate_detailed",
+          "importance": 0.003078004254949152
+        },
+        {
+          "feature": "circuit_dnf_rate",
+          "importance": 0.0030011800981427487
+        },
+        {
+          "feature": "pit_stop_count",
+          "importance": 0.0028298448192858416
+        },
+        {
+          "feature": "pit_frequency",
+          "importance": 0.0026453713385666175
+        },
+        {
+          "feature": "high_pit_frequency",
+          "importance": 0.0012353290279624976
+        },
+        {
+          "feature": "is_street_circuit",
+          "importance": 0.0011993855319607713
+        },
+        {
+          "feature": "late_season_race",
+          "importance": 0.0007733355496136185
+        },
+        {
+          "feature": "is_championship_contender",
+          "importance": 0.0002656099322514784
+        },
+        {
+          "feature": "bad_qualifying_day",
+          "importance": 0.00025033562607040284
+        },
+        {
+          "feature": "poor_qualifying",
+          "importance": 0.0002373540197127854
+        },
+        {
+          "feature": "points_pressure",
+          "importance": 0.00022870912515727003
+        }
+      ],
+      "top_10_features": [
+        "qualifying_gap_to_pole",
+        "qualifying_vs_constructor_avg",
+        "championship_position_change",
+        "grid_position_percentile",
+        "qualifying_vs_average",
+        "championship_position",
+        "points_per_race",
+        "points_momentum",
+        "first_season",
+        "avg_pit_time"
+      ],
+      "importance_sum": 1.0000000000000002
+    },
+    "linear_regression": {
+      "feature_importances": [
+        {
+          "feature": "championship_position",
+          "importance": 1.7810545933550939
+        },
+        {
+          "feature": "qualifying_gap_to_pole",
+          "importance": 1.1453170176205447
+        },
+        {
+          "feature": "qualifying_vs_constructor_avg",
+          "importance": 1.0486903066652797
+        },
+        {
+          "feature": "teammate_avg_grid",
+          "importance": 1.0373643820774763
+        },
+        {
+          "feature": "qualifying_vs_average",
+          "importance": 0.9278222597715046
+        },
+        {
+          "feature": "championship_pressure_adjusted",
+          "importance": 0.8411258741505219
+        },
+        {
+          "feature": "championship_position_change",
+          "importance": 0.8225490782282903
+        },
+        {
+          "feature": "championship_pressure_score",
+          "importance": 0.7325466756322825
+        },
+        {
+          "feature": "driver_avg_grid_position",
+          "importance": 0.684793496317418
+        },
+        {
+          "feature": "first_season",
+          "importance": 0.645006586403768
+        },
+        {
+          "feature": "constructor_avg_grid_position",
+          "importance": 0.555838871360394
+        },
+        {
+          "feature": "pit_time_std",
+          "importance": 0.5401684079033905
+        },
+        {
+          "feature": "grid_vs_teammate",
+          "importance": 0.49724962668846534
+        },
+        {
+          "feature": "pit_duration_variance",
+          "importance": 0.4223668118595162
+        },
+        {
+          "feature": "points",
+          "importance": 0.38024573706114534
+        },
+        {
+          "feature": "estimated_age",
+          "importance": 0.3747042051048884
+        },
+        {
+          "feature": "seasons_active",
+          "importance": 0.3747042051048879
+        },
+        {
+          "feature": "race_number",
+          "importance": 0.3147020897538196
+        },
+        {
+          "feature": "late_season_race",
+          "importance": 0.2840632107418236
+        },
+        {
+          "feature": "grid_position_percentile",
+          "importance": 0.2545908446238949
+        },
+        {
+          "feature": "driver_rolling_avg_grid",
+          "importance": 0.22245924076755721
+        },
+        {
+          "feature": "high_pit_frequency",
+          "importance": 0.2151367596990164
+        },
+        {
+          "feature": "points_gap_to_season_leader",
+          "importance": 0.15144080708844238
+        },
+        {
+          "feature": "points_gap_to_leader",
+          "importance": 0.15144080708844065
+        },
+        {
+          "feature": "points_momentum",
+          "importance": 0.13118320109401355
+        },
+        {
+          "feature": "points_per_race",
+          "importance": 0.11318669782046709
+        },
+        {
+          "feature": "circuit_length",
+          "importance": 0.10665522620774456
+        },
+        {
+          "feature": "volatility_score",
+          "importance": 0.09901481976547909
+        },
+        {
+          "feature": "pit_stop_count",
+          "importance": 0.09451297135031478
+        },
+        {
+          "feature": "pit_frequency",
+          "importance": 0.09451297135031096
+        },
+        {
+          "feature": "season_leader_points",
+          "importance": 0.0837300250069501
+        },
+        {
+          "feature": "leader_points",
+          "importance": 0.0837300250069493
+        },
+        {
+          "feature": "poor_qualifying",
+          "importance": 0.08164670789023733
+        },
+        {
+          "feature": "max_round",
+          "importance": 0.07401749463977553
+        },
+        {
+          "feature": "pit_complexity_score",
+          "importance": 0.07280224422291554
+        },
+        {
+          "feature": "avg_pit_stops",
+          "importance": 0.07280224422291373
+        },
+        {
+          "feature": "circuit_dnf_rate",
+          "importance": 0.0680243777978989
+        },
+        {
+          "feature": "circuit_dnf_rate_detailed",
+          "importance": 0.06802437779789422
+        },
+        {
+          "feature": "dnf_score",
+          "importance": 0.06802437779789156
+        },
+        {
+          "feature": "avg_pit_duration",
+          "importance": 0.058961743902374304
+        },
+        {
+          "feature": "championship_pressure",
+          "importance": 0.0376569470642878
+        },
+        {
+          "feature": "avg_pit_time",
+          "importance": 0.016861822977257857
+        },
+        {
+          "feature": "track_difficulty_score",
+          "importance": 0.015240907851519851
+        },
+        {
+          "feature": "is_street_circuit",
+          "importance": 0.008247018870803705
+        },
+        {
+          "feature": "points_pressure",
+          "importance": 0.00260835012130137
+        },
+        {
+          "feature": "is_championship_contender",
+          "importance": 0.002608350121294137
+        },
+        {
+          "feature": "bad_qualifying_day",
+          "importance": 0.002566672729329061
+        }
+      ],
+      "top_10_features": [
+        "championship_position",
+        "qualifying_gap_to_pole",
+        "qualifying_vs_constructor_avg",
+        "teammate_avg_grid",
+        "qualifying_vs_average",
+        "championship_pressure_adjusted",
+        "championship_position_change",
+        "championship_pressure_score",
+        "driver_avg_grid_position",
+        "first_season"
+      ],
+      "importance_sum": 15.862001470677786
+    },
+    "decision_tree_classifier": {
+      "feature_importances": [
+        {
+          "feature": "qualifying_gap_to_pole",
+          "importance": 0.18079046207171262
+        },
+        {
+          "feature": "championship_position_change",
+          "importance": 0.1116775398813418
+        },
+        {
+          "feature": "qualifying_vs_average",
+          "importance": 0.09504852454466509
+        },
+        {
+          "feature": "grid_position_percentile",
+          "importance": 0.0605902464538354
+        },
+        {
+          "feature": "championship_position",
+          "importance": 0.05480777095825413
+        },
+        {
+          "feature": "qualifying_vs_constructor_avg",
+          "importance": 0.045460208209129216
+        },
+        {
+          "feature": "pit_time_std",
+          "importance": 0.036271901737509764
+        },
+        {
+          "feature": "points_momentum",
+          "importance": 0.03212134805473327
+        },
+        {
+          "feature": "driver_rolling_avg_grid",
+          "importance": 0.02968887529363775
+        },
+        {
+          "feature": "points",
+          "importance": 0.029210522624730038
+        },
+        {
+          "feature": "points_gap_to_season_leader",
+          "importance": 0.022752827260238643
+        },
+        {
+          "feature": "avg_pit_time",
+          "importance": 0.022022060109521683
+        },
+        {
+          "feature": "points_per_race",
+          "importance": 0.021085727464926703
+        },
+        {
+          "feature": "driver_avg_grid_position",
+          "importance": 0.021072870176797886
+        },
+        {
+          "feature": "first_season",
+          "importance": 0.019788576658874228
+        },
+        {
+          "feature": "circuit_length",
+          "importance": 0.019228823623290967
+        },
+        {
+          "feature": "max_round",
+          "importance": 0.016145295448289354
+        },
+        {
+          "feature": "pit_duration_variance",
+          "importance": 0.015392614297639304
+        },
+        {
+          "feature": "championship_pressure_adjusted",
+          "importance": 0.015143089538722971
+        },
+        {
+          "feature": "points_gap_to_leader",
+          "importance": 0.013775719844824237
+        },
+        {
+          "feature": "high_pit_frequency",
+          "importance": 0.013628068949544976
+        },
+        {
+          "feature": "race_number",
+          "importance": 0.012738767263828348
+        },
+        {
+          "feature": "teammate_avg_grid",
+          "importance": 0.011040393372015563
+        },
+        {
+          "feature": "avg_pit_duration",
+          "importance": 0.010341898198401141
+        },
+        {
+          "feature": "volatility_score",
+          "importance": 0.010305194853294836
+        },
+        {
+          "feature": "dnf_score",
+          "importance": 0.009588245248505142
+        },
+        {
+          "feature": "constructor_avg_grid_position",
+          "importance": 0.009080820187681008
+        },
+        {
+          "feature": "grid_vs_teammate",
+          "importance": 0.009001461472780494
+        },
+        {
+          "feature": "pit_complexity_score",
+          "importance": 0.008699962691510028
+        },
+        {
+          "feature": "season_leader_points",
+          "importance": 0.007463683051050174
+        },
+        {
+          "feature": "track_difficulty_score",
+          "importance": 0.007194787772937697
+        },
+        {
+          "feature": "leader_points",
+          "importance": 0.006347680537489046
+        },
+        {
+          "feature": "avg_pit_stops",
+          "importance": 0.0053839364358551816
+        },
+        {
+          "feature": "circuit_dnf_rate",
+          "importance": 0.0044859654508825515
+        },
+        {
+          "feature": "pit_stop_count",
+          "importance": 0.0038005302261003024
+        },
+        {
+          "feature": "pit_frequency",
+          "importance": 0.003661330181367054
+        },
+        {
+          "feature": "circuit_dnf_rate_detailed",
+          "importance": 0.00236276548336229
+        },
+        {
+          "feature": "late_season_race",
+          "importance": 0.0018809983884301993
+        },
+        {
+          "feature": "estimated_age",
+          "importance": 0.0009185059822888399
+        },
+        {
+          "feature": "championship_pressure",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_street_circuit",
+          "importance": 0.0
+        },
+        {
+          "feature": "poor_qualifying",
+          "importance": 0.0
+        },
+        {
+          "feature": "bad_qualifying_day",
+          "importance": 0.0
+        },
+        {
+          "feature": "points_pressure",
+          "importance": 0.0
+        },
+        {
+          "feature": "seasons_active",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_championship_contender",
+          "importance": 0.0
+        },
+        {
+          "feature": "championship_pressure_score",
+          "importance": 0.0
+        }
+      ],
+      "top_10_features": [
+        "qualifying_gap_to_pole",
+        "championship_position_change",
+        "qualifying_vs_average",
+        "grid_position_percentile",
+        "championship_position",
+        "qualifying_vs_constructor_avg",
+        "pit_time_std",
+        "points_momentum",
+        "driver_rolling_avg_grid",
+        "points"
+      ],
+      "importance_sum": 0.9999999999999998
+    },
+    "random_forest_classifier": {
+      "feature_importances": [
+        {
+          "feature": "qualifying_vs_average",
+          "importance": 0.07106814860433977
+        },
+        {
+          "feature": "grid_position_percentile",
+          "importance": 0.060382683865306964
+        },
+        {
+          "feature": "qualifying_vs_constructor_avg",
+          "importance": 0.058629605621735116
+        },
+        {
+          "feature": "qualifying_gap_to_pole",
+          "importance": 0.05449886423726074
+        },
+        {
+          "feature": "championship_position_change",
+          "importance": 0.0453270797385788
+        },
+        {
+          "feature": "teammate_avg_grid",
+          "importance": 0.03482676806442666
+        },
+        {
+          "feature": "points_momentum",
+          "importance": 0.03442650101296487
+        },
+        {
+          "feature": "points_per_race",
+          "importance": 0.030643009989166265
+        },
+        {
+          "feature": "pit_duration_variance",
+          "importance": 0.02937367031485074
+        },
+        {
+          "feature": "driver_rolling_avg_grid",
+          "importance": 0.029080805252434026
+        },
+        {
+          "feature": "pit_time_std",
+          "importance": 0.028564446939304478
+        },
+        {
+          "feature": "avg_pit_time",
+          "importance": 0.028194498925948285
+        },
+        {
+          "feature": "points_gap_to_leader",
+          "importance": 0.027572936302844405
+        },
+        {
+          "feature": "points",
+          "importance": 0.027045056964789444
+        },
+        {
+          "feature": "points_gap_to_season_leader",
+          "importance": 0.026895391691932488
+        },
+        {
+          "feature": "championship_position",
+          "importance": 0.026882166668049882
+        },
+        {
+          "feature": "grid_vs_teammate",
+          "importance": 0.02442328753934527
+        },
+        {
+          "feature": "race_number",
+          "importance": 0.023749701523375313
+        },
+        {
+          "feature": "leader_points",
+          "importance": 0.02128722735492782
+        },
+        {
+          "feature": "driver_avg_grid_position",
+          "importance": 0.02109824207396197
+        },
+        {
+          "feature": "season_leader_points",
+          "importance": 0.020735543656150247
+        },
+        {
+          "feature": "constructor_avg_grid_position",
+          "importance": 0.018412763537694086
+        },
+        {
+          "feature": "first_season",
+          "importance": 0.01714719042031508
+        },
+        {
+          "feature": "avg_pit_duration",
+          "importance": 0.015713786741614336
+        },
+        {
+          "feature": "poor_qualifying",
+          "importance": 0.015591465411521156
+        },
+        {
+          "feature": "avg_pit_stops",
+          "importance": 0.015325514038694383
+        },
+        {
+          "feature": "circuit_length",
+          "importance": 0.014753380589800184
+        },
+        {
+          "feature": "pit_complexity_score",
+          "importance": 0.014445688503028672
+        },
+        {
+          "feature": "track_difficulty_score",
+          "importance": 0.014000146819850266
+        },
+        {
+          "feature": "volatility_score",
+          "importance": 0.013671705401463386
+        },
+        {
+          "feature": "seasons_active",
+          "importance": 0.01344496072521062
+        },
+        {
+          "feature": "estimated_age",
+          "importance": 0.012628463228649071
+        },
+        {
+          "feature": "max_round",
+          "importance": 0.011790402813264607
+        },
+        {
+          "feature": "pit_stop_count",
+          "importance": 0.011202822530084762
+        },
+        {
+          "feature": "championship_pressure_adjusted",
+          "importance": 0.011000820974983347
+        },
+        {
+          "feature": "dnf_score",
+          "importance": 0.010755323541685811
+        },
+        {
+          "feature": "circuit_dnf_rate_detailed",
+          "importance": 0.010279475304785034
+        },
+        {
+          "feature": "pit_frequency",
+          "importance": 0.009780464409678077
+        },
+        {
+          "feature": "championship_pressure",
+          "importance": 0.009561755346138373
+        },
+        {
+          "feature": "circuit_dnf_rate",
+          "importance": 0.008940296498530195
+        },
+        {
+          "feature": "bad_qualifying_day",
+          "importance": 0.006817182531996943
+        },
+        {
+          "feature": "high_pit_frequency",
+          "importance": 0.006368381833032753
+        },
+        {
+          "feature": "championship_pressure_score",
+          "importance": 0.005849495742965638
+        },
+        {
+          "feature": "is_street_circuit",
+          "importance": 0.002127659412345988
+        },
+        {
+          "feature": "late_season_race",
+          "importance": 0.0020517755522307694
+        },
+        {
+          "feature": "is_championship_contender",
+          "importance": 0.0020068997473473363
+        },
+        {
+          "feature": "points_pressure",
+          "importance": 0.0016265420013955036
+        }
+      ],
+      "top_10_features": [
+        "qualifying_vs_average",
+        "grid_position_percentile",
+        "qualifying_vs_constructor_avg",
+        "qualifying_gap_to_pole",
+        "championship_position_change",
+        "teammate_avg_grid",
+        "points_momentum",
+        "points_per_race",
+        "pit_duration_variance",
+        "driver_rolling_avg_grid"
+      ],
+      "importance_sum": 1.0
+    },
+    "decision_tree_regressor": {
+      "feature_importances": [
+        {
+          "feature": "qualifying_gap_to_pole",
+          "importance": 0.5301615309080248
+        },
+        {
+          "feature": "qualifying_vs_constructor_avg",
+          "importance": 0.13219256641782587
+        },
+        {
+          "feature": "championship_position_change",
+          "importance": 0.11761411100580556
+        },
+        {
+          "feature": "grid_position_percentile",
+          "importance": 0.04178166486846517
+        },
+        {
+          "feature": "points_per_race",
+          "importance": 0.034997807888270914
+        },
+        {
+          "feature": "pit_time_std",
+          "importance": 0.030097335469137277
+        },
+        {
+          "feature": "championship_pressure_adjusted",
+          "importance": 0.02738367278209425
+        },
+        {
+          "feature": "qualifying_vs_average",
+          "importance": 0.026360527992345666
+        },
+        {
+          "feature": "championship_position",
+          "importance": 0.023385400097254032
+        },
+        {
+          "feature": "first_season",
+          "importance": 0.02300618320042847
+        },
+        {
+          "feature": "points",
+          "importance": 0.008641615833198796
+        },
+        {
+          "feature": "track_difficulty_score",
+          "importance": 0.002110220246870525
+        },
+        {
+          "feature": "race_number",
+          "importance": 0.001605839414510137
+        },
+        {
+          "feature": "points_momentum",
+          "importance": 0.0006615238757686723
+        },
+        {
+          "feature": "avg_pit_time",
+          "importance": 0.0
+        },
+        {
+          "feature": "championship_pressure",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_street_circuit",
+          "importance": 0.0
+        },
+        {
+          "feature": "circuit_dnf_rate",
+          "importance": 0.0
+        },
+        {
+          "feature": "poor_qualifying",
+          "importance": 0.0
+        },
+        {
+          "feature": "pit_duration_variance",
+          "importance": 0.0
+        },
+        {
+          "feature": "high_pit_frequency",
+          "importance": 0.0
+        },
+        {
+          "feature": "circuit_length",
+          "importance": 0.0
+        },
+        {
+          "feature": "pit_frequency",
+          "importance": 0.0
+        },
+        {
+          "feature": "pit_stop_count",
+          "importance": 0.0
+        },
+        {
+          "feature": "bad_qualifying_day",
+          "importance": 0.0
+        },
+        {
+          "feature": "circuit_dnf_rate_detailed",
+          "importance": 0.0
+        },
+        {
+          "feature": "constructor_avg_grid_position",
+          "importance": 0.0
+        },
+        {
+          "feature": "driver_avg_grid_position",
+          "importance": 0.0
+        },
+        {
+          "feature": "points_pressure",
+          "importance": 0.0
+        },
+        {
+          "feature": "leader_points",
+          "importance": 0.0
+        },
+        {
+          "feature": "points_gap_to_leader",
+          "importance": 0.0
+        },
+        {
+          "feature": "volatility_score",
+          "importance": 0.0
+        },
+        {
+          "feature": "pit_complexity_score",
+          "importance": 0.0
+        },
+        {
+          "feature": "avg_pit_duration",
+          "importance": 0.0
+        },
+        {
+          "feature": "dnf_score",
+          "importance": 0.0
+        },
+        {
+          "feature": "avg_pit_stops",
+          "importance": 0.0
+        },
+        {
+          "feature": "driver_rolling_avg_grid",
+          "importance": 0.0
+        },
+        {
+          "feature": "estimated_age",
+          "importance": 0.0
+        },
+        {
+          "feature": "seasons_active",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_championship_contender",
+          "importance": 0.0
+        },
+        {
+          "feature": "points_gap_to_season_leader",
+          "importance": 0.0
+        },
+        {
+          "feature": "season_leader_points",
+          "importance": 0.0
+        },
+        {
+          "feature": "teammate_avg_grid",
+          "importance": 0.0
+        },
+        {
+          "feature": "championship_pressure_score",
+          "importance": 0.0
+        },
+        {
+          "feature": "grid_vs_teammate",
+          "importance": 0.0
+        },
+        {
+          "feature": "late_season_race",
+          "importance": 0.0
+        },
+        {
+          "feature": "max_round",
+          "importance": 0.0
+        }
+      ],
+      "top_10_features": [
+        "qualifying_gap_to_pole",
+        "qualifying_vs_constructor_avg",
+        "championship_position_change",
+        "grid_position_percentile",
+        "points_per_race",
+        "pit_time_std",
+        "championship_pressure_adjusted",
+        "qualifying_vs_average",
+        "championship_position",
+        "first_season"
+      ],
+      "importance_sum": 1.0
+    },
+    "consensus_top_features": {
+      "qualifying_gap_to_pole": 6,
+      "championship_position_change": 6,
+      "qualifying_vs_constructor_avg": 6,
+      "qualifying_vs_average": 6,
+      "championship_position": 5,
+      "grid_position_percentile": 4,
+      "championship_pressure_adjusted": 3,
+      "teammate_avg_grid": 3,
+      "points_per_race": 3,
+      "pit_time_std": 3
+    }
+  },
+  "metadata": {
+    "timestamp": "20251116_222043",
+    "feature_names": [
+      "championship_position",
+      "pit_stop_count",
+      "avg_pit_time",
+      "pit_time_std",
+      "circuit_length",
+      "points",
+      "pit_frequency",
+      "pit_duration_variance",
+      "high_pit_frequency",
+      "qualifying_gap_to_pole",
+      "grid_position_percentile",
+      "poor_qualifying",
+      "circuit_dnf_rate",
+      "is_street_circuit",
+      "championship_pressure",
+      "leader_points",
+      "points_gap_to_leader",
+      "points_pressure",
+      "driver_avg_grid_position",
+      "qualifying_vs_average",
+      "constructor_avg_grid_position",
+      "qualifying_vs_constructor_avg",
+      "bad_qualifying_day",
+      "circuit_dnf_rate_detailed",
+      "avg_pit_stops",
+      "avg_pit_duration",
+      "dnf_score",
+      "volatility_score",
+      "pit_complexity_score",
+      "track_difficulty_score",
+      "race_number",
+      "first_season",
+      "seasons_active",
+      "estimated_age",
+      "driver_rolling_avg_grid",
+      "season_leader_points",
+      "points_gap_to_season_leader",
+      "is_championship_contender",
+      "points_momentum",
+      "championship_position_change",
+      "teammate_avg_grid",
+      "grid_vs_teammate",
+      "championship_pressure_score",
+      "max_round",
+      "late_season_race",
+      "championship_pressure_adjusted",
+      "points_per_race"
+    ],
+    "evaluation": {
+      "classification": {
+        "model_type": "Logistic Regression",
+        "metrics": {
+          "accuracy": 0.7464960390006093,
+          "precision": 0.7477926339615998,
+          "recall": 0.7464960390006093,
+          "f1": 0.7471158473081371,
+          "roc_auc": 0.7979808475194097
+        },
+        "classification_report": {
+          "0": {
+            "precision": 0.8161231884057971,
+            "recall": 0.8087971274685817,
+            "f1-score": 0.8124436429215509,
+            "support": 1114.0
+          },
+          "1": {
+            "precision": 0.6033519553072626,
+            "recall": 0.6148007590132827,
+            "f1-score": 0.6090225563909775,
+            "support": 527.0
+          },
+          "accuracy": 0.7464960390006093,
+          "macro avg": {
+            "precision": 0.7097375718565299,
+            "recall": 0.7117989432409322,
+            "f1-score": 0.7107330996562642,
+            "support": 1641.0
+          },
+          "weighted avg": {
+            "precision": 0.7477926339615998,
+            "recall": 0.7464960390006093,
+            "f1-score": 0.7471158473081371,
+            "support": 1641.0
+          }
+        }
+      },
+      "regression": {
+        "model_type": "Linear Regression",
+        "metrics": {
+          "mae": 2.2576087174085893,
+          "mse": 8.319431349195028,
+          "rmse": 2.8843424465890015,
+          "r2": 0.47292894168157995
+        }
+      },
+      "summary": {
+        "classification_accuracy": 0.7464960390006093,
+        "regression_mae": 2.2576087174085893,
+        "meets_baseline_requirements": true,
+        "timestamp": "2025-11-16T22:20:43.859620"
+      }
+    },
+    "comparison": {
+      "classification": {
+        "models": {
+          "Logistic Regression": {
+            "accuracy": 0.7464960390006093,
+            "precision": 0.7477926339615998,
+            "recall": 0.7464960390006093,
+            "f1": 0.7471158473081371,
+            "roc_auc": 0.7979808475194097
+          },
+          "Decision Tree Classifier": {
+            "accuracy": 0.732480195003047,
+            "precision": 0.721896543550579,
+            "recall": 0.732480195003047,
+            "f1": 0.7243046729450916,
+            "roc_auc": 0.7044949734106882
+          },
+          "Random Forest Classifier": {
+            "accuracy": 0.7751371115173674,
+            "precision": 0.7703110522479836,
+            "recall": 0.7751371115173674,
+            "f1": 0.7577059472588211,
+            "roc_auc": 0.8153422543512105
+          }
+        },
+        "best_model": "Random Forest Classifier",
+        "best_f1": 0.7577059472588211
+      },
+      "regression": {
+        "models": {
+          "Linear Regression": {
+            "mae": 2.2576087174085893,
+            "mse": 8.319431349195028,
+            "rmse": 2.8843424465890015,
+            "r2": 0.47292894168157995
+          },
+          "Decision Tree Regressor": {
+            "mae": 2.4321243270945008,
+            "mse": 10.955709361468626,
+            "rmse": 3.309940990632405,
+            "r2": 0.30590961263992955
+          },
+          "Random Forest Regressor": {
+            "mae": 1.9764761230627317,
+            "mse": 7.323576041712637,
+            "rmse": 2.7062106425244576,
+            "r2": 0.536020574849218
+          }
+        },
+        "best_model": "Random Forest Regressor",
+        "best_mae": 1.9764761230627317
+      },
+      "best_models": {
+        "classification": "Random Forest Classifier",
+        "regression": "Random Forest Regressor"
+      }
+    },
+    "model_info": {
+      "baseline_models": [
+        "logistic_regression",
+        "linear_regression",
+        "scaler"
+      ],
+      "advanced_models": [
+        "decision_tree_classifier",
+        "decision_tree_regressor",
+        "random_forest_classifier",
+        "random_forest_regressor",
+        "scaler"
+      ],
+      "best_classification_model": "Random Forest Classifier",
+      "best_regression_model": "Random Forest Regressor",
+      "preprocessing": "StandardScaler"
+    }
+  },
+  "evaluation_timestamp": "2025-11-16T22:23:32.081881"
+}

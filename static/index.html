@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Performance Drop Predictor</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-flag-checkered"></i>
+                    <h1>F1 Performance Drop Predictor</h1>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">API Status</span>
+                        <span class="stat-value" id="api-status">
+                            <i class="fas fa-circle status-indicator" id="status-indicator"></i>
+                            <span id="status-text">Checking...</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Scenario Selection -->
+            <section class="scenario-section">
+                <h2><i class="fas fa-racing-helmet"></i> Race Scenario</h2>
+                <div class="scenario-buttons">
+                    <button class="scenario-btn active" data-scenario="custom">
+                        <i class="fas fa-sliders-h"></i>
+                        Custom Scenario
+                    </button>
+                    <button class="scenario-btn" data-scenario="championship-leader">
+                        <i class="fas fa-crown"></i>
+                        Championship Leader
+                    </button>
+                    <button class="scenario-btn" data-scenario="midfield-battle">
+                        <i class="fas fa-users"></i>
+                        Midfield Battle
+                    </button>
+                    <button class="scenario-btn" data-scenario="backmarker">
+                        <i class="fas fa-flag"></i>
+                        Backmarker Team
+                    </button>
+                </div>
+            </section>
+
+            <div class="content-grid">
+                <!-- Input Form -->
+                <section class="input-section">
+                    <h2><i class="fas fa-cog"></i> Race Parameters</h2>
+                    
+                    <form id="prediction-form">
+                        <!-- Championship & Points -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-trophy"></i> Championship Status</h3>
+                            <div class="input-grid">
+                                <div class="input-field">
+                                    <label for="championship_position">Championship Position</label>
+                                    <input type="number" id="championship_position" name="championship_position" 
+                                           min="1" max="20" value="5" required>
+                                    <span class="input-help">Current position in drivers' championship</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="points">Current Points</label>
+                                    <input type="number" id="points" name="points" 
+                                           min="0" max="500" value="100" required>
+                                    <span class="input-help">Total championship points</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="leader_points">Leader Points</label>
+                                    <input type="number" id="leader_points" name="leader_points" 
+                                           min="0" max="500" value="200" required>
+                                    <span class="input-help">Championship leader's points</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pit Stop Performance -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-tools"></i> Pit Stop Performance</h3>
+                            <div class="input-grid">
+                                <div class="input-field">
+                                    <label for="pit_stop_count">Pit Stop Count</label>
+                                    <input type="number" id="pit_stop_count" name="pit_stop_count" 
+                                           min="0" max="10" value="2" required>
+                                    <span class="input-help">Number of pit stops in race</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="avg_pit_time">Average Pit Time (s)</label>
+                                    <input type="number" id="avg_pit_time" name="avg_pit_time" 
+                                           min="15" max="60" step="0.1" value="28.5" required>
+                                    <span class="input-help">Average pit stop duration</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="pit_time_std">Pit Time Std Dev</label>
+                                    <input type="number" id="pit_time_std" name="pit_time_std" 
+                                           min="0" max="20" step="0.1" value="3.2" required>
+                                    <span class="input-help">Consistency of pit stops</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Qualifying Performance -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-stopwatch"></i> Qualifying Performance</h3>
+                            <div class="input-grid">
+                                <div class="input-field">
+                                    <label for="qualifying_gap_to_pole">Gap to Pole (s)</label>
+                                    <input type="number" id="qualifying_gap_to_pole" name="qualifying_gap_to_pole" 
+                                           min="0" max="10" step="0.01" value="1.2" required>
+                                    <span class="input-help">Time gap to pole position</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="grid_position_percentile">Grid Position %ile</label>
+                                    <input type="number" id="grid_position_percentile" name="grid_position_percentile" 
+                                           min="0" max="1" step="0.01" value="0.6" required>
+                                    <span class="input-help">Qualifying position percentile</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="poor_qualifying">Poor Qualifying</label>
+                                    <select id="poor_qualifying" name="poor_qualifying" required>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    <span class="input-help">Significantly underperformed</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Circuit Characteristics -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-road"></i> Circuit Characteristics</h3>
+                            <div class="input-grid">
+                                <div class="input-field">
+                                    <label for="circuit_length">Circuit Length (km)</label>
+                                    <input type="number" id="circuit_length" name="circuit_length" 
+                                           min="2" max="8" step="0.1" value="5.4" required>
+                                    <span class="input-help">Track length in kilometers</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="is_street_circuit">Street Circuit</label>
+                                    <select id="is_street_circuit" name="is_street_circuit" required>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    <span class="input-help">Monaco, Singapore, etc.</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="circuit_dnf_rate">Circuit DNF Rate</label>
+                                    <input type="number" id="circuit_dnf_rate" name="circuit_dnf_rate" 
+                                           min="0" max="1" step="0.01" value="0.15" required>
+                                    <span class="input-help">Historical DNF rate at circuit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Driver & Team -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-user"></i> Driver & Team</h3>
+                            <div class="input-grid">
+                                <div class="input-field">
+                                    <label for="estimated_age">Driver Age</label>
+                                    <input type="number" id="estimated_age" name="estimated_age" 
+                                           min="18" max="45" value="28" required>
+                                    <span class="input-help">Driver's age</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="seasons_active">Seasons Active</label>
+                                    <input type="number" id="seasons_active" name="seasons_active" 
+                                           min="1" max="25" value="8" required>
+                                    <span class="input-help">Years in F1</span>
+                                </div>
+                                <div class="input-field">
+                                    <label for="is_championship_contender">Title Contender</label>
+                                    <select id="is_championship_contender" name="is_championship_contender" required>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    <span class="input-help">Fighting for championship</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Parameters (Collapsible) -->
+                        <div class="form-group advanced-params" style="display: none;">
+                            <h3><i class="fas fa-chart-line"></i> Advanced Parameters</h3>
+                            <div class="input-grid">
+                                <!-- All the remaining 47 features will be auto-populated -->
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="toggle-advanced" class="btn btn-secondary">
+                                <i class="fas fa-chevron-down"></i>
+                                Show Advanced Parameters
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-magic"></i>
+                                Predict Performance
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section">
+                    <h2><i class="fas fa-chart-bar"></i> Prediction Results</h2>
+                    
+                    <div id="results-container" class="results-container">
+                        <div class="results-placeholder">
+                            <i class="fas fa-racing-helmet"></i>
+                            <p>Enter race parameters and click "Predict Performance" to see results</p>
+                        </div>
+                    </div>
+
+                    <!-- Results will be populated here -->
+                    <div id="prediction-results" style="display: none;">
+                        <!-- Classification Result -->
+                        <div class="result-card classification-result">
+                            <h3><i class="fas fa-target"></i> Position Drop Prediction</h3>
+                            <div class="prediction-display">
+                                <div class="prediction-gauge">
+                                    <div class="gauge-container">
+                                        <div class="gauge-fill" id="probability-gauge"></div>
+                                        <div class="gauge-text">
+                                            <span class="gauge-value" id="drop-probability">0%</span>
+                                            <span class="gauge-label">Drop Probability</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="prediction-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Will Drop Position:</span>
+                                        <span class="detail-value" id="will-drop">Unknown</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Confidence:</span>
+                                        <span class="detail-value" id="confidence">Unknown</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Regression Result -->
+                        <div class="result-card regression-result">
+                            <h3><i class="fas fa-arrows-alt-v"></i> Position Change Forecast</h3>
+                            <div class="position-change-display">
+                                <div class="change-indicator">
+                                    <div class="change-value" id="position-change">0.0</div>
+                                    <div class="change-label">Expected Change</div>
+                                </div>
+                                <div class="change-range">
+                                    <span class="range-label">Prediction Interval:</span>
+                                    <span class="range-value" id="prediction-interval">[--, --]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature Importance -->
+                        <div class="result-card feature-importance">
+                            <h3><i class="fas fa-chart-pie"></i> Key Factors</h3>
+                            <div class="importance-chart" id="importance-chart">
+                                <!-- Top contributing features will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay" style="display: none;">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p>Analyzing race scenario...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
