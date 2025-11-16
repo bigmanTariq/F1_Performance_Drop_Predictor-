@@ -48,10 +48,10 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Model files (these are large - we'll document how to generate them)
-models/*.joblib
-models/production/*.joblib
-models/model_registry.json
+# Model files (commented out to include pre-trained models for deployment)
+# models/*.joblib
+# models/production/*.joblib
+# models/model_registry.json
 
 # Data files (large CSV files)
 data/*.csv
