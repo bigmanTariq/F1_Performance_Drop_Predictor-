@@ -1,1 +1,1 @@
-web: python src/serve.py
+web: uvicorn src.serve:app --host 0.0.0.0 --port $PORT

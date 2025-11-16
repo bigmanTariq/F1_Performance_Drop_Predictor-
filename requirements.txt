@@ -11,6 +11,7 @@ lightgbm>=3.3.0
 fastapi>=0.95.0
 uvicorn[standard]>=0.20.0
 pydantic>=1.10.0
+gunicorn>=20.1.0
 
 # Development and Testing
 jupyter>=1.0.0
