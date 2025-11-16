@@ -443,10 +443,27 @@ async def startup_event():
         # Attempt to load the predictor
         try:
             predictor = F1PerformancePredictor()
+            logger.info("Predictor instance created, attempting to load models...")
             predictor.load_models()
             logger.info("✅ API startup completed successfully - models loaded")
         except Exception as model_error:
             logger.error(f"❌ Failed to load models: {model_error}")
+            logger.error(f"Model error type: {type(model_error).__name__}")
+            import traceback
+            logger.error(f"Model loading traceback: {traceback.format_exc()}")
+            
+            # Check what models are actually available
+            try:
+                import os
+                models_dir = "models/production"
+                if os.path.exists(models_dir):
+                    files = os.listdir(models_dir)
+                    logger.info(f"Available model files: {files}")
+                else:
+                    logger.error("Models directory does not exist")
+            except Exception as e:
+                logger.error(f"Error checking model files: {e}")
+            
             # Create a dummy predictor that will return appropriate errors
             predictor = None
         

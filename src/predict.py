@@ -55,14 +55,45 @@ class F1PerformancePredictor:
         logger.info("Loading F1 performance prediction models...")
         
         try:
+            # Check if model directory exists
+            if not os.path.exists(self.model_dir):
+                raise FileNotFoundError(f"Model directory not found: {self.model_dir}")
+            
+            # List available model files
+            model_files = [f for f in os.listdir(self.model_dir) if f.endswith('.joblib')]
+            logger.info(f"Found {len(model_files)} model files in {self.model_dir}")
+            
             # Get best models if not specified
             if classification_model_id is None:
                 classification_model_id = self.registry.get_best_model('classification', 'f1')
+                logger.info(f"Selected best classification model: {classification_model_id}")
             if regression_model_id is None:
                 regression_model_id = self.registry.get_best_model('regression', 'mae')
+                logger.info(f"Selected best regression model: {regression_model_id}")
             
             if not classification_model_id or not regression_model_id:
-                raise ValueError("No suitable models found in registry")
+                # List available models for debugging
+                available_models = self.registry.list_models()
+                logger.error(f"Available models in registry: {available_models}")
+                
+                # Fallback: try to find models by filename pattern
+                logger.info("Attempting fallback model selection...")
+                if not classification_model_id:
+                    clf_files = [f for f in model_files if 'classification' in f and '_model.joblib' in f]
+                    if clf_files:
+                        # Extract model ID from filename
+                        classification_model_id = clf_files[0].replace('_model.joblib', '')
+                        logger.info(f"Fallback classification model: {classification_model_id}")
+                
+                if not regression_model_id:
+                    reg_files = [f for f in model_files if 'regression' in f and '_model.joblib' in f]
+                    if reg_files:
+                        # Extract model ID from filename
+                        regression_model_id = reg_files[0].replace('_model.joblib', '')
+                        logger.info(f"Fallback regression model: {regression_model_id}")
+                
+                if not classification_model_id or not regression_model_id:
+                    raise ValueError(f"No suitable models found. Registry: {available_models}, Files: {model_files}")
             
             # Load classification model
             clf_components = load_production_model(classification_model_id, self.model_dir)
