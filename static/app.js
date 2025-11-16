@@ -2,7 +2,10 @@
 
 class F1PredictorApp {
     constructor() {
-        this.apiBaseUrl = 'http://localhost:8000';
+        // Use current domain for API calls, fallback to localhost for development
+        this.apiBaseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://localhost:8000' 
+            : window.location.origin;
         this.currentScenario = 'custom';
         this.allFeatures = {};
         
