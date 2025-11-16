@@ -401,11 +401,24 @@ async def startup_event():
     global predictor
     try:
         logger.info("Starting F1 Performance Drop Predictor API...")
+        
+        # Check if models exist, if not create them
+        import os
+        models_dir = "models/production"
+        if not os.path.exists(models_dir) or not os.listdir(models_dir):
+            logger.info("Models not found, training models now...")
+            # Run data prep and training
+            import subprocess
+            subprocess.run(["python", "data_prep.py"], check=True)
+            subprocess.run(["python", "train.py"], check=True)
+            logger.info("Model training completed")
+        
         predictor = F1PerformancePredictor()
         predictor.load_models()
         logger.info("API startup completed successfully")
     except Exception as e:
         logger.error(f"Failed to initialize predictor: {str(e)}")
+        logger.error(f"Error details: {type(e).__name__}: {str(e)}")
         # Don't raise here - let the service start and return errors on requests
 
 @app.exception_handler(ValidationError)

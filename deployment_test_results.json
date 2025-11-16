@@ -2,26 +2,12 @@
   "base_url": "https://f1-performance-drop-predictor.onrender.com",
   "tests": {
     "health": {
-      "status": "PASS",
-      "response_time": 0.325563,
-      "data": {
-        "status": "unhealthy",
-        "timestamp": "2025-11-16T21:36:10.003853",
-        "models_loaded": false,
-        "uptime_seconds": 428.593509,
-        "request_count": 0,
-        "error_count": 0,
-        "error_rate": 0.0,
-        "memory_usage": {
-          "rss_mb": 155.93359375,
-          "vms_mb": 1026.5390625,
-          "percent": 0.49681387718557846
-        }
-      }
+      "status": "FAIL",
+      "error": "HTTP 502"
     },
     "model_info": {
       "status": "PASS",
-      "response_time": 0.161097,
+      "response_time": 0.435364,
       "data": {
         "status": "Models not loaded",
         "classification_model": null,
@@ -31,12 +17,12 @@
     },
     "prediction": {
       "status": "FAIL",
-      "error": "HTTP 503: {\"error\":\"ModelNotLoadedError\",\"message\":\"Machine learning models are not loaded. Service unavailable.\",\"details\":{\"suggestion\":\"Wait for models to load or contact administrator\",\"path\":\"https://f1-performance-drop-predictor.onrender.com/predict\"},\"timestamp\":\"2025-11-16T21:36:10.512916\",\"request_id\":null}"
+      "error": "HTTP 503: {\"error\":\"ModelNotLoadedError\",\"message\":\"Machine learning models are not loaded. Service unavailable.\",\"details\":{\"suggestion\":\"Wait for models to load or contact administrator\",\"path\":\"https://f1-performance-drop-predictor.onrender.com/predict\"},\"timestamp\":\"2025-11-16T21:54:51.738520\",\"request_id\":null}"
     },
     "web_ui": {
       "status": "PASS",
-      "response_time": 0.259599
+      "response_time": 0.523292
     }
   },
-  "overall_status": "MOSTLY_PASS"
+  "overall_status": "FAIL"
 }
